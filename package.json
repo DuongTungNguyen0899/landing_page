@@ -1,0 +1,20 @@
+{
+  "name": "landing-page",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^3.1.0"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "lazy-load": "^0.0.2",
+    "swiper": "^8.4.4",
+    "wowjs": "^1.1.3"
+  }
+}

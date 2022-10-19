@@ -1,0 +1,184 @@
+:root {
+    --clr-action-1: #4f77ff;
+    --clr-action-2: #FFC0EC#;
+
+    --clr-text-1: #2d3958;
+    --clr-text-2: #7b88a8;
+    --clr-text-3: #fff;
+    --clr-text-4: #e7e5ea;
+
+    --clr-bg-1: #12022f;
+    --clr-bg-2: #f8fafc;
+    --clr-bg-3: #321370;
+    --clr-bg-4: #fff;
+
+    --clr-border-1: 3px solid rgba(97, 119, 152, 0.2);
+
+    --clr-main-1: #4f77ff;
+    --clr-main-2: #34c635;
+    --clr-main-3: #886cff;
+    --clr-main-4: #ef3737;
+    --clr-main-5: #ff9513;
+    --clr-main-6: #f9e492;
+    --clr-main-7: #001c7f;
+    --clr-main-8: #61dcdf;
+
+    --ff-headline: "Outfit", sans-serif;
+    --ff-primary: "DM Sans", sans-serif;
+
+    --fw-regular: 400;
+    --fw-medium: 500;
+}
+
+@mixin ie-hack {
+    @media all and (-ms-high-contrast: none) {
+        @content;
+    }
+}
+
+@mixin edge-hack {
+    @supports (-ms-ime-align: auto) {
+        @content;
+    }
+}
+
+@mixin media($width, $option: "min") {
+    @if $option == "min" {
+        @media screen and (min-width: #{$width}px) {
+            @content;
+        }
+    } @else if $option == "max" {
+        @media screen and (max-width: #{$width}px) {
+            @content;
+        }
+    }
+}
+
+$font-defalut: 16;
+@mixin font-size($font-size) {
+    font-size: #{$font-size}px;
+    font-size: #{$font-size/$font-defalut}rem;
+}
+
+@mixin center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin center-y {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin center-xy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin fig_left_50 {
+    margin-top: -30px;
+    @include media(992) {
+        margin-right: -10px;
+        margin-top: 2.7%;
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: 450px;
+    }
+    @include media(1200) {
+        margin-right: -10.3%;
+        margin-top: 1%;
+        max-width: 50%;
+        margin-bottom: 20px;
+    }
+    @include media(1440) {
+        margin-right: -20%;
+    }
+    @include media(1600) {
+        margin-right: -30%;
+        max-width: 75%;
+        width: fit-content;
+    }
+}
+@mixin col-2-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    figure {
+        &:first-child {
+            @include media(992) {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+@mixin col-2-over {
+    @include media(992) {
+        display: flex;
+        margin-bottom: 35px;
+    }
+    @include media(1200) {
+        margin-left: -35px;
+        margin-right: -35px;
+        justify-content: space-between;
+    }
+    figure {
+        @include media(767, "max") {
+            width: 100%;
+        }
+        @include media(768) {
+            width: 500px;
+        }
+        img {
+            width: 100%;
+        }
+        margin-bottom: 0;
+        &:first-child {
+            @include media(991, "max") {
+                margin-bottom: 25px;
+            }
+            @include media(992) {
+                margin-right: 25px;
+            }
+        }
+    }
+}
+
+@mixin figcaption_img {
+    @include font-size(14);
+    color: #171817;
+    background: rgba(255, 255, 255, 0.7);
+    // backdrop-filter: blur(5px);
+    position: relative;
+    text-align: center;
+    left: 0;
+    width: 100%;
+    padding: 7px 5px;
+    bottom: 0;
+    @include media(768) {
+        position: absolute;
+    }
+}
+@mixin img-scale($height: "100%", $fit: "contain", $position: "50% 50%") {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    img {
+        position: absolute;
+        object-fit: #{$fit};
+        object-position: #{$position};
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-indent: -9999px;
+    }
+    &::after {
+        content: "";
+        display: block;
+        padding-bottom: #{$height};
+    }
+}
